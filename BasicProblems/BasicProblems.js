@@ -1,6 +1,6 @@
 //  problem no 01 --- Array Filtering And Mapping
 
-// Create An Array Of Objects, Each Representing A Person With Properties Like Name, Age, And Gender. Write A Function To Filter Out All Females And Then Map The Remaining People To An Array Of Names. Print The Final Result.
+// ---Array Filtering And Mapping-- Create An Array Of Objects, Each Representing A Person With Properties Like Name, Age, And Gender. Write A Function To Filter Out All Females And Then Map The Remaining People To An Array Of Names. Print The Final Result.
 
 const peoples = [
     { name: "Abdullah", age: 28, gender: "Male" },
@@ -19,12 +19,12 @@ function femaleFilterAndMapRemainingPeople(people) {
 }
 
 const result = femaleFilterAndMapRemainingPeople(peoples);
-console.log("Problem-No-01", result);
+/// console.log("Problem-No-01", result);
 
 
 /* problem no 02 --- Object Manipulation---  */
 
-/// Create An Array Of Objects, Representing Books With Properties Like Title, Author, And Year. Write A Function That Takes The Array And Returns A New Array With Only The Book Titles. Print The Result.
+/// --Object Manipulation-- Create An Array Of Objects, Representing Books With Properties Like Title, Author, And Year. Write A Function That Takes The Array And Returns A New Array With Only The Book Titles. Print The Result.
 
 
 
@@ -41,4 +41,39 @@ function getBookTitles(book) {
 }
 
 const titles = getBookTitles(books);
-console.log("Problem-No-02", titles);
+/// console.log("Problem-No-02", titles);
+
+
+function separateDuplicates(arr) {
+    let unique = [];
+    let duplicates = [];
+
+    let elementCount = {};
+
+    // Count occurrences of each element
+    arr.forEach(item => {
+        if (elementCount[item]) {
+            elementCount[item]++;
+        } else {
+            elementCount[item] = 1;
+        }
+    });
+
+    // Separate duplicates and unique elements
+    for (let item in elementCount) {
+        if (elementCount[item] > 1) {
+            duplicates.push(item);
+        } else {
+            unique.push(item);
+        }
+    }
+
+    return { unique, duplicates };
+}
+
+// Example usage
+let array = [1, 2, 3, 4, 3, 2, 5, 6];
+let { unique, duplicates } = separateDuplicates(array);
+
+console.log("Unique:", unique);       // Output: Unique: [1, 4, 5, 6]
+console.log("Duplicates:", duplicates); // Output: Duplicates: [2, 3]
